@@ -1,0 +1,11 @@
+- name: Transfer file to S3
+  hosts: localhost
+  tasks:
+    - name: Upload file to S3
+      amazon.aws.aws_s3:
+        bucket: "your-s3-bucket-name"
+        object: "your-file.txt"
+        src: "/path/to/your/file.txt"
+        mode: put
+        #aws_access_key: "your-aws-access-key"   #Cons: Credentials are hardcoded in the playbook, which is insecure. Avoid this in production.
+        #aws_secret_key: "your-aws-secret-key"    #1st aws_configure 
